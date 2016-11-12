@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace LearnAlgorithm.Sort
 {
+    /*
+     * Θ(n²)
+     */
     public class Insertion<T>: ISorter<T> where T : IComparable<T>
     {
         public IList<T> Sort(IList<T> list)
