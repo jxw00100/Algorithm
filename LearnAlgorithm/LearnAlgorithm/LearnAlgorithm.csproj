@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assist\Extensions.cs" />
+    <Compile Include="Sort\Bubble.cs" />
     <Compile Include="Sort\Insertion.cs" />
     <Compile Include="Sort\ISorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
