@@ -5,15 +5,17 @@ using LearnAlgorithm.Assist;
 namespace LearnAlgorithm.Sort
 {
     /*
-     * Θ(nlgn)
+     * Θ(n lgn)
      */
     public class Merge<T>: ISorter<T> where T: IComparable<T>
     {
         public IList<T> Sort(IList<T> list)
         {
-             IList<T> newList = list.CopyCollection();
-             Divide(newList, 0, newList.Count - 1);
-             return newList;
+            if (list == null) throw new ArgumentNullException();
+
+            IList<T> newList = list.CopyCollection();
+            Divide(newList, 0, newList.Count - 1);
+            return newList;
         }
 
         private void Divide(IList<T> list, Int32 lowerBoundIndex, Int32 upperBoundIndex)

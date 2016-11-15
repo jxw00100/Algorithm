@@ -68,6 +68,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Compile Include="Sort\Merge.Test.cs" />
+    <Compile Include="Sort\Selection.Test.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
