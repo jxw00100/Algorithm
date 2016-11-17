@@ -43,6 +43,7 @@
     <Compile Include="MaxSumSubarray\BruteForce.cs" />
     <Compile Include="MaxSumSubarray\DivideConquer.cs" />
     <Compile Include="MaxSumSubarray\IMaxSumSubarray.cs" />
+    <Compile Include="MaxSumSubarray\LinearRuntime.cs" />
     <Compile Include="MaxSumSubarray\SubarraySumIndication.cs" />
     <Compile Include="Sort\Bubble.cs" />
     <Compile Include="Sort\Insertion.cs" />
