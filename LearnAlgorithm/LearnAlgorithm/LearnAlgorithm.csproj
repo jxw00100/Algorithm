@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assist\Extensions.cs" />
+    <Compile Include="MaxSumSubarray\BruteForce.cs" />
+    <Compile Include="MaxSumSubarray\DivideConquer.cs" />
+    <Compile Include="MaxSumSubarray\IMaxSumSubarray.cs" />
+    <Compile Include="MaxSumSubarray\SubarraySumIndication.cs" />
     <Compile Include="Sort\Bubble.cs" />
     <Compile Include="Sort\Insertion.cs" />
     <Compile Include="Sort\ISorter.cs" />

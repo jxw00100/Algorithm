@@ -56,6 +56,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MaxSumSubarray\BruteForce.Test.cs" />
+    <Compile Include="MaxSumSubarray\DivideConquer.Test.cs" />
     <Compile Include="Sort\Bubble.Test.cs" />
     <Compile Include="Sort\Insertion.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
