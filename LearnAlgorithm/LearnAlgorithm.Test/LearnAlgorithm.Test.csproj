@@ -56,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MatrixMultiplication\Straightfoward.Test.cs" />
     <Compile Include="MaxSumSubarray\BruteForce.Test.cs" />
     <Compile Include="MaxSumSubarray\DivideConquer.Test.cs" />
     <Compile Include="MaxSumSubarray\LinearRuntime.Test.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Sort\Merge.Test.cs" />
     <Compile Include="Sort\Selection.Test.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

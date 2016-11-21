@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assist\Extensions.cs" />
+    <Compile Include="MatrixMultiplication\IMatrixMuliplier.cs" />
+    <Compile Include="MatrixMultiplication\Straightfoward.cs" />
     <Compile Include="MaxSumSubarray\BruteForce.cs" />
     <Compile Include="MaxSumSubarray\DivideConquer.cs" />
     <Compile Include="MaxSumSubarray\IMaxSumSubarray.cs" />
