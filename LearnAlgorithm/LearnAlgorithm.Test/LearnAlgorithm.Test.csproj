@@ -56,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MatrixMultiplication\SquareMatrixRecursive.Test.cs" />
     <Compile Include="MatrixMultiplication\Straightfoward.Test.cs" />
     <Compile Include="MaxSumSubarray\BruteForce.Test.cs" />
     <Compile Include="MaxSumSubarray\DivideConquer.Test.cs" />
