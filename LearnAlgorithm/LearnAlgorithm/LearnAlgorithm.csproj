@@ -41,8 +41,12 @@
   <ItemGroup>
     <Compile Include="Assist\Extensions.cs" />
     <Compile Include="MatrixMultiplication\IMatrixMuliplier.cs" />
+    <Compile Include="MatrixMultiplication\Assist\IndexBound.cs" />
+    <Compile Include="MatrixMultiplication\Assist\MatrixUtil.cs" />
+    <Compile Include="MatrixMultiplication\Assist\MatrixIndices.cs" />
     <Compile Include="MatrixMultiplication\SquareMatrixRecursive.cs" />
     <Compile Include="MatrixMultiplication\Straightfoward.cs" />
+    <Compile Include="MatrixMultiplication\StrassenMethod.cs" />
     <Compile Include="MaxSumSubarray\BruteForce.cs" />
     <Compile Include="MaxSumSubarray\DivideConquer.cs" />
     <Compile Include="MaxSumSubarray\IMaxSumSubarray.cs" />

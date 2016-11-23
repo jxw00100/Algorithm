@@ -31,7 +31,7 @@ namespace LearnAlgorithm.MatrixMultiplication
                                           MatrixIndices indicesA,
                                           MatrixIndices indicesB)
         {
-            var length = indicesA.RowIndices.Length();
+            var length = indicesA.RowIndices.GetLength();
             T[,] matrixC = new T[length, length];
 
             if (indicesA.HasOnlyOneElement() && indicesB.HasOnlyOneElement())
@@ -113,71 +113,16 @@ namespace LearnAlgorithm.MatrixMultiplication
                 var matrixA22B22 = RecursivelyCalculate(ref matrixA, ref matrixB, indicesA22, indicesB22);
 
                 //C11 = A11*B11 + A12*B21
-                AddMatrixes(ref matrixA11B11, ref matrixA12B21, ref matrixC, indicesC11);
+                MatrixUtil.Add(ref matrixA11B11, ref matrixA12B21, ref matrixC, indicesC11);
                 //C12 = A11*B12 + A12*B22
-                AddMatrixes(ref matrixA11B12, ref matrixA12B22, ref matrixC, indicesC12);
+                MatrixUtil.Add(ref matrixA11B12, ref matrixA12B22, ref matrixC, indicesC12);
                 //C21 = A21*B11 + A22*B21
-                AddMatrixes(ref matrixA21B11, ref matrixA22B21, ref matrixC, indicesC21);
+                MatrixUtil.Add(ref matrixA21B11, ref matrixA22B21, ref matrixC, indicesC21);
                 //C22 = A21*B12 + A22*B22
-                AddMatrixes(ref matrixA21B12, ref matrixA22B22, ref matrixC, indicesC22);
+                MatrixUtil.Add(ref matrixA21B12, ref matrixA22B22, ref matrixC, indicesC22);
             }
 
             return matrixC;
         }
-
-        private void AddMatrixes(ref T[,] matrixA, ref T[,] matrixB, ref T[,] result, MatrixIndices indicesResult)
-        {
-            var length = matrixA.GetLength(0);
-
-            for (var i = 0; i < length; i++)
-            {
-                for (var j = 0; j < length; j++)
-                {
-                    result[indicesResult.RowIndices.Lower + i, indicesResult.ColumnIndices.Lower + j] = (dynamic) matrixA[i, j] + matrixB[i, j];
-                }
-            }
-        }
-
-        private struct MatrixIndices
-        {
-            public readonly IndexBound RowIndices;
-            public readonly IndexBound ColumnIndices;
-
-            public MatrixIndices(IndexBound rowIndices, IndexBound columnIndices)
-            {
-                RowIndices = rowIndices;
-                ColumnIndices = columnIndices;
-            }
-
-            public Boolean HasOnlyOneElement()
-            {
-                return RowIndices.BoundsAreSame() && ColumnIndices.BoundsAreSame();
-            }
-            
-        }
-
-        private struct IndexBound
-        {
-            public readonly Int32 Lower;
-            public readonly Int32 Upper;
-
-            public IndexBound(Int32 lower, Int32 upper)
-            {
-                if (lower > upper) throw new ArgumentException("lower index is bigger than upper index."); 
-                Lower = lower;
-                Upper = upper;
-            }
-
-            public Boolean BoundsAreSame()
-            {
-                return Lower == Upper;
-            }
-
-            public Int32 Length()
-            {
-                return Upper - Lower + 1;
-            }
-        }
-
     }
 }
