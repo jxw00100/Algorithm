@@ -106,7 +106,7 @@ namespace LearnAlgorithm.MatrixMultiplication
 
                 #region Create 10 Assistant Matrixes S1 - S10
                 //S1 = B12 - B22
-                var S1 = MatrixUtil.Substract(ref matrixB, ref matrixB, indicesB11, indicesB22);
+                var S1 = MatrixUtil.Substract(ref matrixB, ref matrixB, indicesB12, indicesB22);
                 //S2 = A11 + A12
                 var S2 = MatrixUtil.Add(ref matrixA, ref matrixA, indicesA11, indicesA12);
                 //S3 = A21 + A22
@@ -128,31 +128,31 @@ namespace LearnAlgorithm.MatrixMultiplication
                 #endregion
 
                 #region Create 7 Further Assistant Matrixes P1 - P7
-                //P1 = A11 * S1 = A11 * B12 - A11 * B22
+                //P1 = A11 * S1 = A11 * B12 - A11 * B22
                 var P1 = RecursivelyCalculate(ref matrixA, ref S1, 
                     indicesA11,
                     new MatrixIndices(new IndexBound(0, S1.GetLength(0) - 1), new IndexBound(0, S1.GetLength(1) - 1)));
-                //P2 = S2 * B22 = A11 * B22 + A12 * B22
+                //P2 = S2 * B22 = A11 * B22 + A12 * B22
                 var P2 = RecursivelyCalculate(ref S2, ref matrixB,
                     new MatrixIndices(new IndexBound(0, S2.GetLength(0) - 1), new IndexBound(0, S2.GetLength(1) - 1)),
                     indicesB22);
-                //P3 = S3 * B11 = A21 * B11 + A22 * B11
+                //P3 = S3 * B11 = A21 * B11 + A22 * B11
                 var P3 = RecursivelyCalculate(ref S3, ref matrixB,
                     new MatrixIndices(new IndexBound(0, S3.GetLength(0) - 1), new IndexBound(0, S3.GetLength(1) - 1)),
                     indicesB11);
-                //P4 = A22 * S4 = A22 * B21 - A22 * B11
+                //P4 = A22 * S4 = A22 * B21 - A22 * B11
                 var P4 = RecursivelyCalculate(ref matrixA, ref S4, 
                     indicesA22,
                     new MatrixIndices(new IndexBound(0, S4.GetLength(0) - 1), new IndexBound(0, S4.GetLength(1) - 1)));
-                //P5 = S5 * S6 = A11 * B11 + A11 * B22 + A22 * B11 + A22 * B22
+                //P5 = S5 * S6 = A11 * B11 + A11 * B22 + A22 * B11 + A22 * B22
                 var P5 = RecursivelyCalculate(ref S5, ref S6,
                     new MatrixIndices(new IndexBound(0, S5.GetLength(0) - 1), new IndexBound(0, S5.GetLength(1) - 1)),
                     new MatrixIndices(new IndexBound(0, S6.GetLength(0) - 1), new IndexBound(0, S6.GetLength(1) - 1)));
-                //P6 = S7 * S8 = A12 * B21 + A12 * B22 - A22 * B21 - A22 * B22
+                //P6 = S7 * S8 = A12 * B21 + A12 * B22 - A22 * B21 - A22 * B22
                 var P6 = RecursivelyCalculate(ref S7, ref S8,
                     new MatrixIndices(new IndexBound(0, S7.GetLength(0) - 1), new IndexBound(0, S7.GetLength(1) - 1)),
                     new MatrixIndices(new IndexBound(0, S8.GetLength(0) - 1), new IndexBound(0, S8.GetLength(1) - 1)));
-                //P7 = S9 * S10 = A11 * B11 + A11 * B12 - A21 * B11 - A21 * B12
+                //P7 = S9 * S10 = A11 * B11 + A11 * B12 - A21 * B11 - A21 * B12
                 var P7 = RecursivelyCalculate(ref S9, ref S10,
                     new MatrixIndices(new IndexBound(0, S9.GetLength(0) - 1), new IndexBound(0, S9.GetLength(1) - 1)),
                     new MatrixIndices(new IndexBound(0, S10.GetLength(0) - 1), new IndexBound(0, S10.GetLength(1) - 1)));
@@ -163,12 +163,12 @@ namespace LearnAlgorithm.MatrixMultiplication
                  * C11 = P5 + P4 - P2 + P6
                  * 
                  * As follows:
-                 *   P5:   A11 * B11 + A11 * B22 + A22 * B11 + A22 * B22
-                 * + P4:                         - A22 * B11             + A22 * B21 
-                 * - P2:             - A11 * B22                                     - A12 * B22
-                 * + P6:                                     - A22 * B22 - A22 * B21 + A12 * B22 + A12 * B21   
+                 *   P5:   A11 * B11 + A11 * B22 + A22 * B11 + A22 * B22
+                 * + P4:                         - A22 * B11             + A22 * B21 
+                 * - P2:             - A11 * B22                                     - A12 * B22
+                 * + P6:                                     - A22 * B22 - A22 * B21 + A12 * B22 + A12 * B21   
                  * ------------------------------------------------------------------------------------------
-                 * =       A11 * B11                                                             + A12 * B21
+                 * =       A11 * B11                                                             + A12 * B21
                  */
                 var tempresult = MatrixUtil.Add(ref P5, ref P4);
                 tempresult = MatrixUtil.Substract(ref tempresult, ref P2);
@@ -179,10 +179,10 @@ namespace LearnAlgorithm.MatrixMultiplication
                  * C12 = P1 + P2
                  * 
                  * As follows:
-                 *   P1:   A11 * B12 - A11 * B22
-                 * + P2:             + A11 * B22 + A12 * B22 
+                 *   P1:   A11 * B12 - A11 * B22
+                 * + P2:             + A11 * B22 + A12 * B22 
                  * ------------------------------------------------------------------------------------------
-                 * =       A11 * B12             + A12 * B22
+                 * =       A11 * B12             + A12 * B22
                  */
                 tempresult = MatrixUtil.Add(ref P1, ref P2);
                 MatrixUtil.Copy(ref tempresult, ref matrixC, indicesC12);
@@ -191,10 +191,10 @@ namespace LearnAlgorithm.MatrixMultiplication
                  * C21 = P3 + P4
                  * 
                  * As follows:
-                 *   P3:   A21 * B11 - A22 * B11
-                 * + P4:             + A22 * B11 + A22 * B21 
+                 *   P3:   A21 * B11 - A22 * B11
+                 * + P4:             + A22 * B11 + A22 * B21 
                  * ------------------------------------------------------------------------------------------
-                 * =       A21 * B11             + A22 * B21
+                 * =       A21 * B11             + A22 * B21
                  */
                 tempresult = MatrixUtil.Add(ref P3, ref P4);
                 MatrixUtil.Copy(ref tempresult, ref matrixC, indicesC21);
@@ -203,12 +203,12 @@ namespace LearnAlgorithm.MatrixMultiplication
                  * C22 = P5 + P1 - P3 - P7
                  * 
                  * As follows:
-                 *   P5:   A11 * B11 + A11 * B22 + A22 * B11 + A22 * B22
-                 * + P1:             - A11 * B22                         + A11 * B12 
-                 * - P3:                         - A22 * B11                         - A21 * B11
-                 * - P7: - A11 * B11                                     - A11 * B12 + A21 * B11 + A21 * B12   
+                 *   P5:   A11 * B11 + A11 * B22 + A22 * B11 + A22 * B22
+                 * + P1:             - A11 * B22                         + A11 * B12 
+                 * - P3:                         - A22 * B11                         - A21 * B11
+                 * - P7: - A11 * B11                                     - A11 * B12 + A21 * B11 + A21 * B12   
                  * ------------------------------------------------------------------------------------------
-                 * =                                           A22 * B22                         + A21 * B12
+                 * =                                           A22 * B22                         + A21 * B12
                  */
                 tempresult = MatrixUtil.Add(ref P5, ref P1);
                 tempresult = MatrixUtil.Substract(ref tempresult, ref P3);
